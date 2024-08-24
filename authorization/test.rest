@@ -1,0 +1,13 @@
+### Test the protected endpoint
+
+# Define the base URL of your API
+@base_url = http://127.0.0.1:8000/protected
+
+# Use the obtained access token for authentication
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0NTA0NjU2LCJpYXQiOjE3MjQ1MDM3NTYsImp0aSI6ImI4MGVhZjYxYWMyZjQ3ZTQ5MWYzNzA0YmUyZjBhZTJkIiwidXNlcl9pZCI6Mn0.AYdXt-OAO214ksIqgb5f1k3_6nZQ0_W1M7lHWchoob
+
+# Make a GET request to the protected endpoint
+GET {{base_url}}
+Authorization: {{token}}
+
+###
