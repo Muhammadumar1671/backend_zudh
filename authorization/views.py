@@ -1,5 +1,4 @@
 
-from oauthlib.common import generate_token
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
@@ -7,7 +6,7 @@ from rest_framework import status
 from django.utils import timezone
 from datetime import timedelta
 from .models import User_Model
-from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.tokens import RefreshToken # type: ignore 
 from rest_framework.permissions import IsAuthenticated
 
 @api_view(['POST'])

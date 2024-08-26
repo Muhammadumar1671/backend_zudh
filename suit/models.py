@@ -1,4 +1,5 @@
 from django.db import models
+from authorization.models import User_Model
 
 
 class suit_details(models.Model):
@@ -11,6 +12,8 @@ class suit_details(models.Model):
     mobile_pocket = models.ForeignKey('mobile_pocket', on_delete=models.CASCADE)
     instructions = models.ForeignKey('instruction', on_delete=models.CASCADE)
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
+    paid = models.BooleanField(default=False)
+    user = models.ForeignKey(User_Model, on_delete=models.CASCADE)
     
     
 

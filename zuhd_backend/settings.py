@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-   'rest_framework_simplejwt',
+     'rest_framework_simplejwt',
     'authorization',
     'suit',
     
@@ -58,11 +58,11 @@ MIDDLEWARE = [
 
 
 ROOT_URLCONF = 'zuhd_backend.urls'
-
+import os
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,6 +74,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'zuhd_backend.wsgi.application'
 
@@ -147,6 +148,6 @@ SIMPLE_JWT = {
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,
     'ALGORITHM': 'HS256',
-    'SIGNING_KEY': SECRET_KEY,  # Use your Django secret key
+    'SIGNING_KEY': SECRET_KEY,  
     'AUTH_HEADER_TYPES': ('Bearer',),
 }

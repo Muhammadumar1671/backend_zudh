@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stripe Checkout Test</title>
+</head>
+<body>
+    <h1>Test Stripe Checkout</h1>
+    <form action="http://127.0.0.1:8000/payment/create_checkout_session/" method="post">
+        <button type="submit">Pay Now</button>
+    </form>
+
+    <!-- Stripe.js library -->
+    <script src="https://js.stripe.com/v3/"></script>
+</body>
+</html>

@@ -1,5 +1,4 @@
-
-from oauthlib.common import generate_token
+from logging import exception
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
@@ -8,6 +7,10 @@ from django.utils import timezone
 from datetime import timedelta
 from rest_framework.permissions import IsAuthenticated
 from .models import *
+import stripe
+import os
+
+
 
 
 @api_view(['GET'])
@@ -78,7 +81,16 @@ def create_suit(request):
     create_suit.save()
     print(create_suit)
     print(total_price)
-    return Response({'message': 'Suit created successfully'}, status=status.HTTP_201_CREATED)
+    return Response({'message': 'Suit created successfully' , 'id': create_suit.pk}, status=status.HTTP_201_CREATED)
 
 
-    
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def cart(request):
+    try:
+        user = request.data.get('user')
+        suit = suit_details.objects.filter(user=user)
+        return Response(suit, status=status.HTTP_200_OK)
+    except exception as e:
+        return Response({'message': 'No user cart found'}, status=status.HTTP_404_NOT_FOUND)
